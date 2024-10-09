@@ -1,0 +1,3 @@
+Barkod: 0000000000001
+Konum: boyanın ustu
+Yön: Sağ Ön
