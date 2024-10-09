@@ -78,70 +78,113 @@ public class App {
 import AdaYildirim.model.*;
 import AdaYildirim.service.*;
 
+
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
+import java.util.Scanner;
 
 public class App {
+
     public static void main(String[] args) {
-        // Toyota modellerini oluştur ve listeye ekle
-        List<Model> toyotaModelleri = new ArrayList<>();
-        toyotaModelleri.add(new Model(1L, "Auris"));
-        toyotaModelleri.add(new Model(2L, "Avensis"));
-        toyotaModelleri.add(new Model(3L, "Camry"));
-        toyotaModelleri.add(new Model(4L, "Carina"));
-        toyotaModelleri.add(new Model(5L, "Celica"));
-        toyotaModelleri.add(new Model(6L, "Corolla"));
-        toyotaModelleri.add(new Model(7L, "Corona"));
-        toyotaModelleri.add(new Model(8L, "Cressida"));
-        toyotaModelleri.add(new Model(9L, "Estima"));
-        toyotaModelleri.add(new Model(10L, "GT86"));
-        toyotaModelleri.add(new Model(11L, "MR2"));
-        toyotaModelleri.add(new Model(12L, "Picnic"));
-        toyotaModelleri.add(new Model(13L, "Previa"));
-        toyotaModelleri.add(new Model(14L, "Prius"));
-        toyotaModelleri.add(new Model(15L, "Starlet"));
-        toyotaModelleri.add(new Model(16L, "Supra"));
-        toyotaModelleri.add(new Model(17L, "Tercel"));
-        toyotaModelleri.add(new Model(18L, "Urban Cruiser"));
-        toyotaModelleri.add(new Model(19L, "Verso"));
-        toyotaModelleri.add(new Model(20L, "Yaris"));
-        toyotaModelleri.add(new Model(21L, "C-HR"));
-        toyotaModelleri.add(new Model(22L, "Corolla Cross"));
-        toyotaModelleri.add(new Model(23L, "FJ Cruiser"));
-        toyotaModelleri.add(new Model(24L, "Hilux"));
-        toyotaModelleri.add(new Model(25L, "Land Cruiser"));
-        toyotaModelleri.add(new Model(26L, "RAV4"));
-        toyotaModelleri.add(new Model(27L, "Yaris Cross"));
-        toyotaModelleri.add(new Model(28L, "4Runner"));
-        toyotaModelleri.add(new Model(29L, "Sequoia"));
-        toyotaModelleri.add(new Model(30L, "Tacoma"));
-        toyotaModelleri.add(new Model(31L, "Tundra"));
+        Scanner scanner = new Scanner(System.in);
 
-        // Toyota markasını oluştur
-        Marka toyota = new Marka(1L, "Toyota", toyotaModelleri);
+        // 1. Marka seçimi
+        System.out.println("Lütfen marka adını giriniz (Örneğin: Mercedes): ");
+        String marka = scanner.nextLine();
 
-        // Toyota markasının modellerini for döngüsü ile kaydet
-        try {
-            File anaKlasor = new File("markalar/Toyota");
+        // 2. Model seçimi
+        System.out.println("Lütfen model adını giriniz (Örneğin: C Serisi): ");
+        String model = scanner.nextLine();
 
-            // Eğer Toyota klasörü yoksa oluştur
-            if (!anaKlasor.exists()) {
-                anaKlasor.mkdirs();
-            }
+        // 3. Parça türü seçimi
+        System.out.println("Lütfen parça türünü seçiniz (Kapı, Kaput, Tampon, Far, Stop): ");
+        String parcaTuru = scanner.nextLine();
 
-            // For döngüsü ile tüm Toyota modellerini kaydet
-            for (Model model : toyota.getModeller()) {
-                File modelKlasoru = new File(anaKlasor, model.getModelIsmi());
-                if (!modelKlasoru.exists()) {
-                    modelKlasoru.mkdirs();  // Eğer model klasörü yoksa oluştur
-                    System.out.println(model.getModelIsmi() + " modeli için klasör oluşturuldu.");
+        // 4. Yön seçimi
+        String[] yonSecenekleri;
+        if (parcaTuru.equalsIgnoreCase("Kapı") || parcaTuru.equalsIgnoreCase("Çamurluk")) {
+            yonSecenekleri = new String[]{"Sağ Ön", "Sağ Arka", "Sol Ön", "Sol Arka"};
+        } else if (parcaTuru.equalsIgnoreCase("Far") || parcaTuru.equalsIgnoreCase("Stop")) {
+            yonSecenekleri = new String[]{"Sağ", "Sol"};
+        } else if (parcaTuru.equalsIgnoreCase("Kaput") || parcaTuru.equalsIgnoreCase("Tampon")) {
+            yonSecenekleri = new String[]{"Ön", "Arka"};
+        } else {
+            System.out.println("Geçersiz parça türü seçildi!");
+            return;
+        }
+
+        System.out.println("Lütfen yön seçiniz:");
+        for (int i = 0; i < yonSecenekleri.length; i++) {
+            System.out.println((i + 1) + ". " + yonSecenekleri[i]);
+        }
+
+        // Kullanıcıdan sayısal bir girdi bekleniyor
+        int yonSecimi = 0;
+        boolean gecerliSecim = false;
+        while (!gecerliSecim) {
+            try {
+                // Giriş satır olarak alınır ve tam sayıya dönüştürülür
+                String secim = scanner.nextLine();
+                yonSecimi = Integer.parseInt(secim);
+
+                // Yön seçiminin geçerli olup olmadığını kontrol et
+                if (yonSecimi < 1 || yonSecimi > yonSecenekleri.length) {
+                    System.out.println("Geçersiz yön seçimi! Lütfen geçerli bir seçim yapınız.");
                 } else {
-                    System.out.println(model.getModelIsmi() + " modeli zaten mevcut.");
+                    gecerliSecim = true;
                 }
+            } catch (NumberFormatException e) {
+                System.out.println("Geçersiz giriş! Lütfen bir sayı giriniz.");
             }
-        } catch (Exception e) {
+        }
+
+        String secilenYon = yonSecenekleri[yonSecimi - 1];
+
+        // 5. Barkod ve resim dosyası bilgileri
+        System.out.println("Lütfen barkod bilgisini giriniz: ");
+        String barkod = scanner.nextLine();
+
+        System.out.println("Lütfen resim dosyasının yolunu giriniz (Örneğin: C:\\Users\\Abdullah Yusuf\\Desktop): ");
+        String resimYolu = scanner.nextLine();
+        File kaynakResim = new File(resimYolu);
+
+        // 6. Konum bilgisi
+        System.out.println("Lütfen konumu giriniz (Örneğin: Yazıhanenin üstündeki 3. rafta): ");
+        String konum = scanner.nextLine();
+
+        // Hedef dizin yapısı
+        String hedefDizin = "C:/Users/Abdullah Yusuf/IdeaProjects/bardkodDukkan/bardkodDukkan/markalar/"
+                + marka + "/" + model + "/" + parcaTuru + "/" + secilenYon + "/";
+
+        // Resim ve barkod dosyası ismi
+        String dosyaAdi = model.toLowerCase().replace(" ", "_") + "_" + parcaTuru.toLowerCase() + "_" + secilenYon.toLowerCase().replace(" ", "_");
+        File hedefResim = new File(hedefDizin + dosyaAdi + ".jpg");
+        File barkodDosyasi = new File(hedefDizin + dosyaAdi + ".txt");
+
+        try {
+            // Hedef dizini oluştur
+            File hedefKlasor = new File(hedefDizin);
+            if (!hedefKlasor.exists()) {
+                hedefKlasor.mkdirs();  // Dizin yoksa oluştur
+            }
+
+            // 7. Resmi hedef dizine kopyala
+            Files.copy(kaynakResim.toPath(), hedefResim.toPath(), StandardCopyOption.REPLACE_EXISTING);
+            System.out.println("Resim başarıyla kaydedildi: " + hedefResim.getPath());
+
+            // 8. Barkod ve konum bilgisini metin dosyasına yaz
+            try (FileWriter writer = new FileWriter(barkodDosyasi)) {
+                writer.write("Barkod: " + barkod + "\n");
+                writer.write("Konum: " + konum + "\n");
+                writer.write("Yön: " + secilenYon + "\n");
+                System.out.println("Barkod ve konum bilgisi başarıyla kaydedildi: " + barkodDosyasi.getPath());
+            }
+
+        } catch (IOException e) {
+            System.out.println("Kayıt işlemi sırasında hata oluştu: " + e.getMessage());
             e.printStackTrace();
         }
     }
