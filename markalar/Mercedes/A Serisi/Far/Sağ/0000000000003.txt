@@ -1,0 +1,3 @@
+Barkod: 0000000000003
+Konum: kapının sağı
+Yön: Sağ

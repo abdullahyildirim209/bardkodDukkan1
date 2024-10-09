@@ -1,0 +1,3 @@
+Barkod: 0000000000001
+Konum: masanın ustu
+Yön: Ön

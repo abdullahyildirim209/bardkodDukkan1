@@ -1,3 +1,3 @@
-Barkod: 1234566677
-Konum: Yazıhanenin üstündeki 3. rafta
+Barkod: 0000000000001
+Konum: alt katta
 Yön: Sağ Ön
