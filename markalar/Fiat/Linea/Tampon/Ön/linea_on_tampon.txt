@@ -1,0 +1,2 @@
+Barkod: 1234567890123
+Konum: Yazıhanenin üstündeki katın yani 3. rafta
