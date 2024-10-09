@@ -1,0 +1,3 @@
+Barkod: 0000000000006
+Konum: gtr yok
+Yön: Sol

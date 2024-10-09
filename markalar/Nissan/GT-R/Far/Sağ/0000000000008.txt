@@ -1,0 +1,3 @@
+Barkod: 0000000000008
+Konum: yerde
+Yön: Sağ

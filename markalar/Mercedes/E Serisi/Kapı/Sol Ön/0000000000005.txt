@@ -1,0 +1,3 @@
+Barkod: 0000000000005
+Konum: maminin elinde
+Yön: Sol Ön
