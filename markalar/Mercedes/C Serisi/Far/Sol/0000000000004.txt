@@ -1,0 +1,3 @@
+Barkod: 0000000000004
+Konum: arabanın yanı
+Yön: Sol
