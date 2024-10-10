@@ -1,0 +1,3 @@
+Barkod: 0000000000010
+Konum: yanımda
+Yön: Arka

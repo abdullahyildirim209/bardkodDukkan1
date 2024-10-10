@@ -1,0 +1,3 @@
+Barkod: 0000000000009
+Konum: yazıhanede
+Yön: Sol
