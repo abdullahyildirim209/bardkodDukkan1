@@ -1,0 +1,3 @@
+Barkod: 0000000000015
+Konum: aa
+Yön: Sağ Ön
