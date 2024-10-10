@@ -1,0 +1,3 @@
+Barkod: 0000000000017
+Konum: bilimiyorum
+Yön: Arka

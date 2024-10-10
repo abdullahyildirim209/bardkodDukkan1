@@ -351,26 +351,13 @@ public class App extends JFrame {
         });
         arkaPlanPaneli.add(kaydetButton);
 
-        /*// Alt tarafa yazıyı ekle
+        // Alt tarafa yazıyı ekle
         JLabel altYazi = new JLabel("Ada Yıldırım Otomotiv", SwingConstants.CENTER);
         altYazi.setFont(new Font("Serif", Font.BOLD, 16));
         altYazi.setForeground(Color.BLACK);
-        add(altYazi, BorderLayout.SOUTH); // Yazıyı en alta ekle*/
+        add(altYazi, BorderLayout.SOUTH); // Yazıyı en alta ekle
 
-        JLabel altYazi = new JLabel("Ada Yıldırım Otomotiv", SwingConstants.CENTER);
-        altYazi.setFont(new Font("Serif", Font.BOLD, 20));  // Yazı boyutunu 20 olarak büyüttük
-        altYazi.setHorizontalAlignment(SwingConstants.CENTER);  // Yazıyı ortaladık
-        altYazi.setForeground(Color.BLACK);
 
-// GridBagLayout ile ortalama
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.gridx = 0;
-        gbc.gridy = GridBagConstraints.RELATIVE;  // Alt kısma yerleştirir
-        gbc.gridwidth = GridBagConstraints.REMAINDER;
-        gbc.anchor = GridBagConstraints.PAGE_END;  // Ekranın altına hizalar
-        gbc.insets = new Insets(20, 0, 20, 0);  // Kenar boşlukları ekledik
-
-        add(altYazi, gbc);
 
 
         setVisible(true);

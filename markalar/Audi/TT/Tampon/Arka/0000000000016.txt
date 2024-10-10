@@ -1,0 +1,3 @@
+Barkod: 0000000000016
+Konum: bilmiyorum
+Yön: Arka

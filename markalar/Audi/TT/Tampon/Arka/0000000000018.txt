@@ -1,0 +1,3 @@
+Barkod: 0000000000018
+Konum: asddasasd
+Yön: Arka
