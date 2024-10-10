@@ -11,21 +11,17 @@ import java.util.List;
 public class MarkaKaydetService {
 
     public static void kaydetMarkaVeModeller(List<Marka> markalar) throws IOException {
-        // "markalar" adlı ana klasörü oluştur
         File anaKlasor = new File("markalar");
         if (!anaKlasor.exists()) {
             anaKlasor.mkdirs();
         }
 
-        // Her marka için ayrı bir klasör oluştur ve modelleri kaydet
         for (Marka marka : markalar) {
-            // Markaya özel klasör oluştur (örneğin "markalar/Toyota")
             File markaKlasoru = new File(anaKlasor, marka.getIsim());
             if (!markaKlasoru.exists()) {
                 markaKlasoru.mkdirs();
             }
 
-            // Markanın modellerini kaydetmek için bir dosya oluştur
             File modelDosyasi = new File(markaKlasoru, "modeller.txt");
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(modelDosyasi))) {
                 writer.write("Marka: " + marka.getIsim());
@@ -33,7 +29,6 @@ public class MarkaKaydetService {
                 writer.write("Modeller:");
                 writer.newLine();
 
-                // Her bir modeli dosyaya yaz
                 for (Model model : marka.getModeller()) {
                     writer.write("- " + model.getModelIsmi());
                     writer.newLine();

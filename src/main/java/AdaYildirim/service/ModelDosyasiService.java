@@ -8,7 +8,6 @@ import java.io.IOException;
 public class ModelDosyasiService {
 
     public static void modelDosyasiOlustur() throws IOException {
-        // "modeller" adlı bir dosya oluştur
         File modelDosyasi = new File("modeller");
         if (!modelDosyasi.exists()) {
             modelDosyasi.createNewFile();  // Eğer dosya yoksa oluştur
@@ -17,7 +16,6 @@ public class ModelDosyasiService {
         System.out.println("Modeller dosyası oluşturuldu: " + modelDosyasi.getAbsolutePath());
     }
 
-    // Parçaları dosyaya eklemek için bir metod
     public static void parcayiDosyayaEkle(String parcaBilgisi) throws IOException {
         File modelDosyasi = new File("modeller");
         if (!modelDosyasi.exists()) {
@@ -25,7 +23,6 @@ public class ModelDosyasiService {
             return;
         }
 
-        // Parça bilgilerini dosyaya ekle
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(modelDosyasi, true))) {
             writer.write(parcaBilgisi);
             writer.newLine();

@@ -16,7 +16,6 @@ import java.util.List;
 
 public class ParcaKaydetService {
 
-    // Barkod oluşturma metodu
     public static void barkodOlustur(String data, String filePath) throws Exception {
         BarcodeFormat format = BarcodeFormat.CODE_128;
         int width = 300;
@@ -27,7 +26,6 @@ public class ParcaKaydetService {
         MatrixToImageWriter.writeToPath(matrix, "png", path);
     }
 
-    // Parçaları markalara göre kaydetme
     public static void kaydet(List<Parca> parcalar) throws IOException {
         for (Parca parca : parcalar) {
             String markaAdi = parca.getMarka().getIsim();
@@ -35,19 +33,16 @@ public class ParcaKaydetService {
             String parcaIsmi = parca.getIsim();
             String barkod = parca.getBarkod();
 
-            // Marka adında bir klasör oluştur
             File markaKlasoru = new File("markalar/" + markaAdi);
             if (!markaKlasoru.exists()) {
-                markaKlasoru.mkdirs();  // Klasör yoksa oluştur
+                markaKlasoru.mkdirs();
             }
 
-            // Barkodları kaydedeceğimiz klasörün oluşturulması
             File barkodKlasoru = new File(markaKlasoru, "barkodlar");
             if (!barkodKlasoru.exists()) {
-                barkodKlasoru.mkdirs();  // Klasör yoksa oluştur
+                barkodKlasoru.mkdirs();
             }
 
-            // Barkod resmini kaydet
             String barkodDosyaAdi = barkodKlasoru.getAbsolutePath() + "/" + parcaIsmi.replace(" ", "_") + "_barkod.png";
             try {
                 barkodOlustur(barkod, barkodDosyaAdi);
@@ -56,7 +51,6 @@ public class ParcaKaydetService {
                 System.out.println("Barkod oluşturulurken hata oluştu: " + e.getMessage());
             }
 
-            // Her kategori için bir dosya oluştur ve parçayı barkod ile yaz
             File kategoriDosyasi = new File(markaKlasoru, kategori + ".txt");
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(kategoriDosyasi, true))) {
                 writer.write("Parça: " + parcaIsmi + ", Barkod: " + barkod);

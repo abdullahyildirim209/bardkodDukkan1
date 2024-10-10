@@ -59,38 +59,38 @@ Kaydet:
 Parça bilgilerini kaydetmek için "Kaydet" butonuna basın. Barkod ve resim, belirlenen dosya yapısında ilgili klasöre kaydedilir.
 
 Dosya Yapısı
-css
-Kodu kopyala
 bardkodDukkan/
-├── markalar/
-│   ├── BMW/
-│   │   ├── X5/
-│   │   │   ├── Kapı/
-│   │   │   │   ├── sağ_on/
-│   │   │   │   ├── sol_on/
-│   │   │   │   └── sağ_arka/
-│   │   └── Tampon/
-│   └── Mercedes/
-│       ├── C Serisi/
-│       └── E Serisi/
-├── src/
-│   ├── main/
-│   │   ├── java/
-│   │   │   └── AdaYildirim/
-│   │   │       └── App.java
-├── README.md
-└── pom.xml
+
+      ├── markalar/
+      │   ├── BMW/
+      │   │   ├── X5/
+      │   │   │   ├── Kapı/
+      │   │   │   │   ├── sağ_on/
+      │   │   │   │   ├── sol_on/
+      │   │   │   │   └── sağ_arka/
+      │   │   └── Tampon/
+      │   └── Mercedes/
+      │       ├── C Serisi/
+      │       └── E Serisi/
+      ├── src/
+      │   ├── main/
+      │   │   ├── java/
+      │   │   │   └── AdaYildirim/
+      │   │   │       └── App.java
+      ├── README.md
+      └── pom.xml
+
 markalar/: Bu klasör, her bir markanın altındaki modelleri ve parçaları içerir. Parçalar, ilgili barkod ve resim dosyalarını içerir.
 src/: Uygulamanın ana kaynak kodlarını içerir.
 pom.xml: Maven bağımlılıklarını ve proje yapılandırmalarını içerir.
 Örnek Kaydedilen Klasör Yapısı
 Eğer bir Mercedes marka "C Serisi" aracına ait "Kapı" parçası sağ ön seçilirse, dosya yapısı şu şekilde olacaktır:
 
-bash
-Kodu kopyala
+
 markalar/Mercedes/C Serisi/Kapı/Sağ Ön/
-├── 0000000000001.jpg   # Parçanın resmi
-├── 0000000000001.txt   # Barkod bilgileri
+      ├── 0000000000001.jpg   # Parçanın resmi
+      ├── 0000000000001.txt   # Barkod bilgileri
+
 Yapılacaklar
 Daha fazla araç parçası ekleme
 Barkod tarama ve parça sorgulama özelliği ekleme

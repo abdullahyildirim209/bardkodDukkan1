@@ -7,15 +7,12 @@ public class Marka {
     private String isim;
     private List<Model> modeller;
 
-
-    // Constructor
     public Marka(Long id, String isim, List<Model> modeller) {
         this.id = id;
         this.isim = isim;
         this.modeller = modeller;
     }
 
-    // Getters and Setters
     public Long getId() {
         return id;
     }

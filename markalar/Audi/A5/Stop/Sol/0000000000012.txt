@@ -1,0 +1,3 @@
+Barkod: 0000000000012
+Konum: yan taraf
+Yön: Sol

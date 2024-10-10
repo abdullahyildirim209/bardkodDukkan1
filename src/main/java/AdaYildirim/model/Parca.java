@@ -9,7 +9,6 @@ public class Parca {
     private String barkod;
     private int stokMiktari;
 
-    // Constructor
     public Parca(Long id, String isim, Marka marka, String kategori, double fiyat, String barkod, int stokMiktari) {
         this.id = id;
         this.isim = isim;
@@ -20,7 +19,6 @@ public class Parca {
         this.stokMiktari = stokMiktari;
     }
 
-    // Getters and Setters
     public Long getId() {
         return id;
     }

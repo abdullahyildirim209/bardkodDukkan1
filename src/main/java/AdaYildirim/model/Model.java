@@ -4,13 +4,11 @@ public class Model {
     private Long id;
     private String modelIsmi;
 
-    // Constructor
     public Model(Long id, String modelIsmi) {
         this.id = id;
         this.modelIsmi = modelIsmi;
     }
 
-    // Getters and Setters
     public Long getId() {
         return id;
     }

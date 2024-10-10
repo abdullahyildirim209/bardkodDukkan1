@@ -1,0 +1,3 @@
+Barkod: 0000000000013
+Konum: ust
+Yön: Sol
