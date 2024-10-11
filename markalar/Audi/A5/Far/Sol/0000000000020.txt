@@ -1,0 +1,3 @@
+Barkod: 0000000000020
+Konum: ısjosıfdıjsdfd
+Yön: Sol
